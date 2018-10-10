@@ -16,15 +16,15 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-L
 
 1. Open the Microsoft Store and choose your favorite Linux distribution.
 
-https://www.microsoft.com/store/p/ubuntu/9nblggh4msv6
+[Ubuntu](https://www.microsoft.com/store/p/ubuntu/9nblggh4msv6)
 
-https://www.microsoft.com/store/apps/9njvjts82tjx
+[OpenSUSE](https://www.microsoft.com/store/apps/9njvjts82tjx)
 
-https://www.microsoft.com/store/apps/9p32mwbh6cns
+[SLES](https://www.microsoft.com/store/apps/9p32mwbh6cns)
 
-https://www.microsoft.com/store/apps/9PKR34TNCV07
+[Kali Linux](https://www.microsoft.com/store/apps/9PKR34TNCV07)
 
-https://www.microsoft.com/store/apps/9MSVKQC78PK6
+[Debian GNU/Linux](https://www.microsoft.com/store/apps/9MSVKQC78PK6)
 
 2. From the distro's page, select "Get"
 
