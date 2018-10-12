@@ -32,6 +32,30 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-L
 
 Now that your Linux distribution is installed, you must initialize your new distribution instance once, before it can be used.
 
+## Optimizations
+
+Windows Defender with Real Time Protection check all files handled by Linux Distribution, but it's not recommended to disable this feature.
+
+The solution is to exclude the Linux Distribution folder and other folder that you use for linux from Windows Defender's Virus & Threat protection.
+
+```
+Windows 10 > Setting > Update & Security > Windows Defender > Open Windows Defender Security Center > Virus & Threat protection > Virus & Threat protection settings > Exclusions > Add or remove exclusions > Add an exclusions > Folder
+```
+
+The folder to your Linux Distribution you can find in
+
+```
+C:\Users\{USERNAME}\AppData\Local\Packages
+```
+
+#### Example: Ubuntu
+
+```
+C:\Users\{USERNAME}\AppData\Local\Packages\CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc
+```
+
+> Replace {USERNAME} with you Windows 10 username
+
 ## Requirements
 
-> Windows build 16215 or later
+Windows build 16215 or later
