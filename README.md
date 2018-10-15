@@ -56,6 +56,41 @@ C:\Users\{USERNAME}\AppData\Local\Packages\CanonicalGroupLimited.UbuntuonWindows
 
 > Replace {USERNAME} with you Windows 10 username
 
+## Chmod/Chown WSL Improvements
+
+> By default there is no support for chmod and chown for files in /mnt/c.
+
+```
+sudo umount /mnt/c
+sudo mount -t drvfs C: /mnt/c -o metadata
+```
+
+This will only affect the current instance, so a startup script needed to remount every time an intance is opened.
+
+Create the remount script
+
+```
+cd /etc/init.d/
+sudo touch remountc.sh
+sudo vim remountc.sh
+```
+
+Set the content of the remount script
+
+```
+#!/bin/sh
+umount /mnt/c
+mount -t drvfs C: /mnt/c -o metadata
+exit 0;
+
+```
+
+Invoke update-rc.d
+
+```
+sudo update-rc.d remountc.sh defaults
+```
+
 ## Requirements
 
 Windows build 16215 or later
