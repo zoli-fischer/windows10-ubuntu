@@ -56,7 +56,7 @@ C:\Users\{USERNAME}\AppData\Local\Packages\CanonicalGroupLimited.UbuntuonWindows
 
 > Replace {USERNAME} with you Windows 10 username
 
-## Fif file permission problems
+## Fix file permission problems
 
 In some cases a file/folder in Windows 10 drives (c:, d: etc.) is not writable or not found. Example: npm module less-loader, file access permission problems.
 
