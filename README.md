@@ -56,6 +56,23 @@ C:\Users\{USERNAME}\AppData\Local\Packages\CanonicalGroupLimited.UbuntuonWindows
 
 > Replace {USERNAME} with you Windows 10 username
 
+## Fif file permission problems
+
+In some cases a file/folder in Windows 10 drives (c:, d: etc.) is not writable or not found. Example: npm module less-loader, file access permission problems.
+
+> To fix this the Linux Distribution application needs to be run as administrator.
+
+Steps to make run the Linux Distribution application always as administrator:
+
+> For ilustration I will use Ubuntu 18.04
+
+1. Start the Ubuntu 18.04 application
+2. Open the 'Task Manager'
+3. In Processes > Apps search for Ubuntu 18.04 and expand it 
+4. In the list right click on ubuntu 1804 and select Properties
+5. Under 'Compatibility' tab check the checkbox for 'Run this program as an administrator'
+6. Click OK to close the window
+
 ## Chmod/Chown WSL Improvements
 
 > By default there is no support for chmod and chown for files in /mnt/c.
@@ -65,31 +82,7 @@ sudo umount /mnt/c
 sudo mount -t drvfs C: /mnt/c -o metadata
 ```
 
-This will only affect the current instance, so a startup script needed to remount every time an intance is opened.
-
-Create the remount script
-
-```
-cd /etc/init.d/
-sudo touch remountc.sh
-sudo vim remountc.sh
-```
-
-Set the content of the remount script
-
-```
-#!/bin/sh
-umount /mnt/c
-mount -t drvfs C: /mnt/c -o metadata
-exit 0;
-
-```
-
-Invoke update-rc.d
-
-```
-sudo update-rc.d remountc.sh defaults
-```
+This will only affect the current instance.
 
 ## Requirements
 
