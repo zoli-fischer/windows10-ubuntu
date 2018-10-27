@@ -54,6 +54,12 @@ C:\Users\{USERNAME}\AppData\Local\Packages
 C:\Users\{USERNAME}\AppData\Local\Packages\CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc
 ```
 
+#### Example: Debian
+
+```
+C:\Users\{USERNAME}\AppData\Local\Packages\TheDebianProject.DebianGNULinux_76v4gfsz19hv4
+```
+
 > Replace {USERNAME} with you Windows 10 username
 
 ## Fix file permission problems
