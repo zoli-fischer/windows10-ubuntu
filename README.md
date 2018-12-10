@@ -90,6 +90,32 @@ sudo mount -t drvfs C: /mnt/c -o metadata
 
 This will only affect the current instance.
 
+## Errors & fixes
+
+### invoke-rc.d: could not determine current runlevel
+
+> Source: https://github.com/Microsoft/WSL/issues/1761
+
+1. Edit /etc/init.d/ebtables
+2. Search for
+```
+case "$1" in
+    start)
+        [ "$EBTABLES_LOAD_ON_START" = "yes" ] && load
+        ;;
+    stop)
+        [ "$EBTABLES_SAVE_ON_STOP" = "yes" ] && save
+        clear
+        ;;
+```
+3. Comment out the actions taken by stop)
+```
+    stop)
+        # [ "$EBTABLES_SAVE_ON_STOP" = "yes" ] && save
+        # clear
+        ;;
+```
+
 ## Requirements
 
 Windows build 16215 or later
