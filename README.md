@@ -48,7 +48,7 @@ The folder to your Linux Distribution you can find in
 C:\Users\{USERNAME}\AppData\Local\Packages
 ```
 
-#### Example: Ubuntu
+#### Example: Ubuntu 18
 
 ```
 C:\Users\{USERNAME}\AppData\Local\Packages\CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc
@@ -91,6 +91,59 @@ sudo mount -t drvfs C: /mnt/c -o metadata
 This will only affect the current instance.
 
 ## Errors & fixes
+
+### ssh ForwardAgent not forwarding key
+
+The problem is that the ssh is not started when you open a new session. With this fix the ssh agen will start on every new session.
+
+> This fix not works on Ubuntu
+
+> Source: https://stackoverflow.com/questions/18404272/running-ssh-agent-when-starting-git-bash-on-windows/45562886#45562886
+
+1. Edit ~/.bashrc
+2. Add at the end
+```
+# Set up ssh-agent
+SSH_ENV="$HOME/.ssh/environment"
+
+function start_agent {
+    echo "Initializing new SSH agent..."
+    touch $SSH_ENV
+    chmod 600 "${SSH_ENV}"
+    /usr/bin/ssh-agent | sed 's/^echo/#echo/' >> "${SSH_ENV}"
+    . "${SSH_ENV}" > /dev/null
+    /usr/bin/ssh-add
+}
+
+# Source SSH settings, if applicable
+if [ -f "${SSH_ENV}" ]; then
+    . "${SSH_ENV}" > /dev/null
+    kill -0 $SSH_AGENT_PID 2>/dev/null || {
+        start_agent
+    }
+else
+    start_agent
+fi
+```
+3. Reload the configuration
+```
+source ~/.bashr
+```
+4. Create ssh config file
+```
+touch ~/.ssh/config
+```
+5. Add your host configuration to ```touch ~/.ssh/config```. You can add multiple host by repeating this.
+```
+Host {HOST}
+HostName {HOSTALIAS}
+User {USER}
+PreferredAuthentications publickey
+IdentityFile {PATH_TO_YOUR_PRIVATE_KEY}
+AddKeysToAgent yes
+ForwardAgent yes
+```
+> Don't forget to change {HOST}, {HOSTALIAS}, {USER} and {PATH_TO_YOUR_PRIVATE_KEY}
 
 ### invoke-rc.d: could not determine current runlevel
 
