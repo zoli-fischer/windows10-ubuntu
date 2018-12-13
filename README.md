@@ -127,7 +127,7 @@ fi
 ```
 3. Reload the configuration
 ```
-source ~/.bashr
+source ~/.bashrc
 ```
 4. Create ssh config file
 ```
