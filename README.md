@@ -62,6 +62,14 @@ C:\Users\{USERNAME}\AppData\Local\Packages\TheDebianProject.DebianGNULinux_76v4g
 
 > Replace {USERNAME} with you Windows 10 username
 
+## Before you start - Install essentials
+
+```
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install build-essential gettext bash-completion openssh-client curl
+```
+
 ## Fix file permission problems
 
 In some cases a file/folder in Windows 10 drives (c:, d: etc.) is not writable or not found. Example: npm module less-loader, file access permission problems.
