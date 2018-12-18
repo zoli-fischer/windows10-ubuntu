@@ -87,16 +87,19 @@ Steps to make run the Linux Distribution application always as administrator:
 5. Under 'Compatibility' tab check the checkbox for 'Run this program as an administrator'
 6. Click OK to close the window
 
-## Chmod/Chown WSL Improvements
+## Keep/change linux permission for files/folders on windows partition
 
-> By default there is no support for chmod and chown for files in /mnt/c.
+> By default this is not supported on windows partition
 
+1. Edit or create if not exist ```sudo /etc/wsl.conf```
+2. Add at the end
 ```
-sudo umount /mnt/c
-sudo mount -t drvfs C: /mnt/c -o metadata
+[automount]
+options = "metadata"
 ```
+3. Restart your PC
 
-This will only affect the current instance.
+> Source: https://superuser.com/questions/1323645/unable-to-change-file-permissions-on-ubuntu-bash-for-windows-10
 
 ## Errors & fixes
 
@@ -106,9 +109,7 @@ The problem is that the ssh is not started when you open a new session. With thi
 
 > This fix not works on Ubuntu
 
-> Source: https://stackoverflow.com/questions/18404272/running-ssh-agent-when-starting-git-bash-on-windows/45562886#45562886
-
-1. Edit ~/.bashrc
+1. Edit ```~/.bashrc```
 2. Add at the end
 ```
 # Set up ssh-agent
@@ -153,9 +154,9 @@ ForwardAgent yes
 ```
 > Don't forget to change {HOST}, {HOSTALIAS}, {USER} and {PATH_TO_YOUR_PRIVATE_KEY}
 
-### invoke-rc.d: could not determine current runlevel
+> Source: https://stackoverflow.com/questions/18404272/running-ssh-agent-when-starting-git-bash-on-windows/45562886#45562886
 
-> Source: https://github.com/Microsoft/WSL/issues/1761
+### invoke-rc.d: could not determine current runlevel
 
 1. Edit /etc/init.d/ebtables
 2. Search for
@@ -176,6 +177,8 @@ case "$1" in
         # clear
         ;;
 ```
+
+> Source: https://github.com/Microsoft/WSL/issues/1761
 
 ## Requirements
 
